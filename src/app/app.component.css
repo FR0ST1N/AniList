@@ -1,0 +1,19 @@
+.card-container {
+  height: 80%;
+  width: 60%;
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-img {
+  height: 315px;
+  width: inherit*2;
+}
+
+.align-cen {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
