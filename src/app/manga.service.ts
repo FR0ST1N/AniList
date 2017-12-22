@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Manga } from './manga';
 import { Headers, Http } from '@angular/http';
+import { parseString } from 'xml2js';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -8,11 +9,15 @@ import 'rxjs/add/operator/toPromise';
 export class MangaService {
   constructor(private http: Http) { }
   getManga(user): Promise<Manga[]> {
-    return this.http.get('https://cors-anywhere.herokuapp.com/https://jikan.me/api/user_list/' + user + '/manga')
+    return this.http.get('https://cors-anywhere.herokuapp.com/https://myanimelist.net/malappinfo.php?u=' + user + '&status=all&type=manga')
              .toPromise()
              .then(function(response){
-               return response.json().manga as Manga[];
-             })
+                let jsData;
+                parseString(response.text(), function (err, result) {
+                  jsData = result.myanimelist;
+                });
+                return jsData.manga as Manga[];
+            })
              .catch(this.handleError);
   }
   private handleError(error: any): Promise<any> {

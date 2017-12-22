@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Anime } from './anime';
 import { Headers, Http } from '@angular/http';
+import { parseString } from 'xml2js';
 
 import 'rxjs/add/operator/toPromise';
 
@@ -8,10 +9,14 @@ import 'rxjs/add/operator/toPromise';
 export class AnimeService {
   constructor(private http: Http) { }
   getAnime(user): Promise<Anime[]> {
-    return this.http.get('https://cors-anywhere.herokuapp.com/https://jikan.me/api/user_list/' + user + '/anime')
+    return this.http.get('https://cors-anywhere.herokuapp.com/https://myanimelist.net/malappinfo.php?u=' + user + '&status=all&type=anime')
              .toPromise()
              .then(function(response){
-               return response.json().anime as Anime[];
+                let jsData;
+                parseString(response.text(), function (err, result) {
+                  jsData = result.myanimelist;
+                });
+                return jsData.anime as Anime[];
              })
              .catch(this.handleError);
   }

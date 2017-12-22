@@ -11,21 +11,27 @@ import { MangaService } from './manga.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  user = 'xiliaw';
+  user = 'Frostin';
   title = this.user + '\'s AniList';
   allanime: Anime[];
   allmanga: Manga[];
   loadState = 0;
+  cards = 14;
+  onScroll() {
+    if (this.cards < this.allanime.length) {
+      this.cards += 14;
+    }
+  }
   constructor(private animeService: AnimeService, private mangaService: MangaService) { }
   ngOnInit(): void {
-   this.animeService.getAnime(this.user).then((animedata) => {
-      this.loadState++;
+    this.animeService.getAnime(this.user).then((animedata) => {
       this.allanime = animedata;
-   });
-    this.mangaService.getManga(this.user).then((mangadata) => {
       this.loadState++;
+    });
+    this.mangaService.getManga(this.user).then((mangadata) => {
       this.allmanga = mangadata;
-   });
+      this.loadState++;
+    });
   }
 }
 

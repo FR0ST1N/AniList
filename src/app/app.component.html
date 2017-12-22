@@ -1,44 +1,45 @@
 <div *ngIf="loadState < 2">
-<md-spinner class="align-cen"></md-spinner>
+  <md-spinner class="align-cen"></md-spinner>
 </div>
 <div *ngIf="loadState == 2">
-<md-toolbar color="primary">
-  <span>{{ title }}</span>
-</md-toolbar>
-<md-tab-group>
-  <md-tab label="Anime">
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" style="padding-bottom:30px;">
-      <div *ngFor="let anime of allanime" fxFlex.gt-xs="50%" [fxFlex.gt-md]="100/5" [fxFlex.gt-sm]="100/3" [fxFlex.gt-lg]="100/7">
-        <md-card class="card-container">
-          <img md-card-image [src]="anime.series_image" class="card-img">
-          <md-card-header style="margin-top: 10px;">
-            <md-card-title style="font-size: 16px;">{{ anime.series_title }}</md-card-title>
-            <md-card-subtitle>
-              <div style="font-size:28px;"> {{ anime.my_score }}
-                <md-icon>star</md-icon>
-              </div>
-            </md-card-subtitle>
-          </md-card-header>
-        </md-card>
+  <md-toolbar color="primary">
+    <span>{{ title }}</span>
+  </md-toolbar>
+  <md-tab-group>
+    <md-tab label="Anime">
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" style="padding-bottom:30px;" infiniteScroll [infiniteScrollDistance]="1"
+        [infiniteScrollThrottle]="300" (scrolled)="onScroll()">
+        <div *ngFor="let anime of allanime; let i = index" fxFlex.gt-xs="50%" [fxFlex.gt-md]="100/5" [fxFlex.gt-sm]="100/3" [fxFlex.gt-lg]="100/7">
+          <md-card class="card-container" *ngIf="i < cards">
+            <img md-card-image [src]="anime.series_image" class="card-img">
+            <md-card-header style="margin-top: 10px;">
+              <md-card-title style="font-size: 16px;">{{ anime.series_title }}</md-card-title>
+              <md-card-subtitle>
+                <div style="font-size:28px;"> {{ anime.my_score }}
+                  <md-icon>star</md-icon>
+                </div>
+              </md-card-subtitle>
+            </md-card-header>
+          </md-card>
+        </div>
       </div>
-    </div>
-  </md-tab>
-  <md-tab label="Manga">
-    <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" style="padding-bottom:30px;">
-      <div *ngFor="let manga of allmanga" fxFlex.gt-xs="50%" [fxFlex.gt-md]="100/5" [fxFlex.gt-sm]="100/3" [fxFlex.gt-lg]="100/7">
-        <md-card class="card-container">
-          <img md-card-image [src]="manga.series_image" class="card-img">
-          <md-card-header style="margin-top: 10px;">
-            <md-card-title style="font-size: 16px;">{{ manga.series_title }}</md-card-title>
-            <md-card-subtitle>
-              <div style="font-size:28px;"> {{ manga.my_score }}
-                <md-icon>star</md-icon>
-              </div>
-            </md-card-subtitle>
-          </md-card-header>
-        </md-card>
+    </md-tab>
+    <md-tab label="Manga">
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutWrap="wrap" style="padding-bottom:30px;">
+        <div *ngFor="let manga of allmanga" fxFlex.gt-xs="50%" [fxFlex.gt-md]="100/5" [fxFlex.gt-sm]="100/3" [fxFlex.gt-lg]="100/7">
+          <md-card class="card-container">
+            <img md-card-image [src]="manga.series_image" class="card-img">
+            <md-card-header style="margin-top: 10px;">
+              <md-card-title style="font-size: 16px;">{{ manga.series_title }}</md-card-title>
+              <md-card-subtitle>
+                <div style="font-size:28px;"> {{ manga.my_score }}
+                  <md-icon>star</md-icon>
+                </div>
+              </md-card-subtitle>
+            </md-card-header>
+          </md-card>
+        </div>
       </div>
-    </div>
-  </md-tab>
-</md-tab-group>
+    </md-tab>
+  </md-tab-group>
 </div>

@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AnimeService } from './anime.service';
 import { MangaService } from './manga.service';
 import 'hammerjs';
@@ -20,7 +21,8 @@ import { AppComponent } from './app.component';
     MaterialModule,
     HttpModule,
     JsonpModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    InfiniteScrollModule
   ],
   providers: [AnimeService, MangaService],
   bootstrap: [AppComponent]
