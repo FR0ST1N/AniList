@@ -1,14 +1,11 @@
 # [AniList](https://fr0st1n.github.io/AniList/)
 [MyAnimeList.net](https://myanimelist.net/) User Anime List with [Angular](https://angular.io/).
 
-## API
-
-It uses the [Jikan API](https://jikan.me/) to get the user's anime list from MAL.
-
 ## Packages Used
 
 * [Angular Material](https://material.angular.io/)
 * [Flex Layout](https://github.com/angular/flex-layout)
+* [xml2js](https://github.com/Leonidas-from-XIV/node-xml2js)
 
 ## Usage
 
