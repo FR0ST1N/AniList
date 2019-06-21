@@ -1,4 +1,4 @@
-# [AniList](https://fr0st1n.github.io/AniList/) (MAL API IS CURRENTLY DOWN)
+# [AniList](https://fr0st1n.github.io/AniList/) (MAL API IS DOWN)
 [MyAnimeList.net](https://myanimelist.net/) User Anime List with [Angular](https://angular.io/).
 
 ## Packages Used
