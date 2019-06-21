@@ -1,4 +1,4 @@
-# [AniList](https://fr0st1n.github.io/AniList/)
+# [AniList](https://fr0st1n.github.io/AniList/) (MAL API IS CURRENTLY DOWN)
 [MyAnimeList.net](https://myanimelist.net/) User Anime List with [Angular](https://angular.io/).
 
 ## Packages Used
@@ -15,7 +15,6 @@ Just Change the Value of `user` in [AppComponent](https://github.com/FR0ST1N/Ani
 
 ### Building for GitHub Pages
 ```
-
 ng build --prod --base-href https://username.github.io/RepositoryName/
 ```
 
